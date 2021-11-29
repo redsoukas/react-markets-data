@@ -3,11 +3,12 @@
   text-align: center;
   padding: 15px 0;
   button {
-    margin: 0 12px;
+    margin: 0 9px;
   }
   input {
     width: 100px;
-    border: 1px solid var(--lightGray);
+    border: 1px solid;
+    border-color: var(--lightGray);
     padding: 5px;
     border-radius: var(--radius);
   }

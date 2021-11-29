@@ -1,13 +1,13 @@
 import styles from 'pages/coins-list/coins-filters/coins-filters.module.scss';
-import { useState } from 'react';
+import { BaseSyntheticEvent, ReactElement, useState } from 'react';
 
 export interface CoinsFiltersProps {
   currentPage: number;
   isFinalPage: boolean;
   perPage: number;
-  onPaginate: Function;
-  onReset: Function;
-  onUpdateLimit: Function;
+  onPaginate: (a: number) => void;
+  onReset: () => void;
+  onUpdateLimit: (limit: number) => void;
 }
 
 export const CoinsFilters = ({
@@ -17,7 +17,7 @@ export const CoinsFilters = ({
   onPaginate,
   onUpdateLimit,
   onReset
-}: CoinsFiltersProps) => {
+}: CoinsFiltersProps): ReactElement => {
   const prevPage = currentPage - 1 > 0 ? currentPage - 1 : null;
   const nextPage = currentPage + 1;
 
@@ -39,7 +39,7 @@ export const CoinsFilters = ({
         type="number"
         min="1"
         placeholder={`${limit} per page`}
-        onChange={(e: any) => {
+        onChange={(e: BaseSyntheticEvent) => {
           setLimit(e.target.value);
         }}
       />

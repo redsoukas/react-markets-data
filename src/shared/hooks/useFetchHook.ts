@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 
-const initialState: any = {
+interface FetchState {
+  loading: boolean;
+  data: any;
+  error: unknown;
+}
+const initialState: FetchState = {
   loading: false,
   data: [],
   error: ''
 };
 
-export const useFetch = (url: string) => {
+export const useFetch = (url: string): FetchState => {
   const [fetchState, setFetchState] = useState(initialState);
   useEffect(() => {
     if (!url) return;

@@ -1,8 +1,8 @@
 import * as Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { useRef } from 'react';
+import { ReactElement, useRef } from 'react';
 import { Loader } from 'shared/components';
-export const PriceChart = ({ state, title }: any) => {
+export const PriceChart = ({ state, title }: any): ReactElement => {
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
 
   if (state?.loading)

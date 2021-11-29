@@ -1,9 +1,16 @@
-import { Coin, CoinVM } from 'shared/models';
+import { Coin, Coins, CoinVM } from 'shared/models';
 
 export const apiBase = new URL('https://api.coingecko.com/api/v3/coins/markets');
 
+type CoinListParams = { [key: string]: any };
+
+interface CoinListState {
+  coins: Coins;
+  paramsObject: CoinListParams;
+}
+
 // Initial State
-export const initialState = {
+export const initialState: CoinListState = {
   coins: [],
   paramsObject: {
     page: 1,
@@ -21,15 +28,15 @@ export enum ActionTypes {
 }
 
 // Reducer
-export const reducer = (state: any = initialState, action: any) => {
+export const reducer = (state: CoinListState = initialState, action: any): CoinListState => {
   switch (action.type) {
     case ActionTypes.SWITCH_PAGE: {
-      const newPage = action?.page;
+      const { page } = action?.payload;
       return {
         ...state,
         paramsObject: {
           ...state.paramsObject,
-          page: newPage
+          page
         }
       };
     }
@@ -40,13 +47,14 @@ export const reducer = (state: any = initialState, action: any) => {
       };
     }
     case ActionTypes.UPDATE_COINS: {
+      const { coins } = action?.payload;
       return {
         ...state,
-        coins: action?.coins?.map((coin: Coin) => new CoinVM(coin))
+        coins: coins?.map((coin: Coin) => new CoinVM(coin))
       };
     }
     case ActionTypes.UPDATE_LIMIT: {
-      const limit = action?.limit;
+      const { limit } = action?.payload;
       return {
         ...state,
         paramsObject: {
@@ -62,29 +70,35 @@ export const reducer = (state: any = initialState, action: any) => {
 };
 
 // Actions
-export const updateCoins = (coins: any) => {
+export const updateCoins = (coins: Coins): Record<string, unknown> => {
   return {
     type: ActionTypes.UPDATE_COINS,
-    coins
+    payload: {
+      coins
+    }
   };
 };
 
-export const switchPage = (page: number) => {
+export const switchPage = (page: number): Record<string, unknown> => {
   return {
     type: ActionTypes.SWITCH_PAGE,
-    page
+    payload: {
+      page
+    }
   };
 };
 
-export const resetFilters = () => {
+export const resetFilters = (): Record<string, unknown> => {
   return {
     type: ActionTypes.RESET
   };
 };
 
-export const updateLimitPerPage = (limit: number) => {
+export const updateLimitPerPage = (limit: number): Record<string, unknown> => {
   return {
     type: ActionTypes.UPDATE_LIMIT,
-    limit
+    payload: {
+      limit
+    }
   };
 };

@@ -2,7 +2,7 @@ import { currencyFormat, setUrlParams } from 'shared/utils';
 
 describe('Utils test suite', () => {
   describe('currencyFormat Tests', () => {
-    let number: number = 3245223;
+    const number = 3245223;
     let formatted: string;
 
     beforeEach(() => {

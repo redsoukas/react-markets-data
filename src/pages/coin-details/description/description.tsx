@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import styles from 'pages/coin-details/description/description.module.scss';
 
-export const Description = ({ content }: any) => {
+interface DescriptionProps {
+  content: string;
+}
+export const Description = ({ content }: DescriptionProps): ReactElement => {
   const showButton = content?.length > 500;
   const [descriptionHidden, setDescriptionHidden] = useState(showButton);
-  if (!content) return null;
+  if (!content) return <></>;
   return (
     <div className={`${styles.description} ${descriptionHidden ? styles.hidden : ''}`}>
       <div dangerouslySetInnerHTML={{ __html: content }}></div>

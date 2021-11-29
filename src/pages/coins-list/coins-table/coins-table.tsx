@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { Coin, Coins } from 'shared/models';
 import styles from 'pages/coins-list/coins-table/coins-table.module.scss';
+import { ReactElement } from 'react';
 
 export interface CoinsTableProps {
   cols: Array<string>;
   data: Coins;
 }
 
-export const CoinsTable = ({ cols, data }: CoinsTableProps) => {
+export const CoinsTable = ({ cols, data }: CoinsTableProps): ReactElement => {
   return (
     <table className={styles.table}>
       <thead>
@@ -30,7 +31,7 @@ export interface CoinTableRowItemProps {
   coin: Coin;
 }
 
-export const CoinTableRowItem = ({ coin }: CoinTableRowItemProps) => {
+export const CoinTableRowItem = ({ coin }: CoinTableRowItemProps): ReactElement => {
   const navigate = useNavigate();
   return (
     <tr onClick={() => navigate(`/coin/${coin.id}`)}>

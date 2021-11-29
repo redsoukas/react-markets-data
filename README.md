@@ -1,6 +1,6 @@
 # React Coin Markets
 
-Displays list of cryptocurrencies and details about them. 
+Displays list of cryptocurrencies and details about them.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 You can also play with the [Live Demo](http://cryptodata.johnsoukas.com/)
@@ -23,12 +23,15 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn lint`
+
 scans the project for lint errors
 
 ### `yarn lint:fix`
+
 fixes the lint errors
 
 ### `yarn format`
+
 formats the code
 
 ### `yarn build`

@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { ReactElement, useEffect, useReducer } from 'react';
 import { CoinsTable } from 'pages/coins-list/coins-table/coins-table';
 import {
   apiBase,
@@ -14,7 +14,7 @@ import { useFetch } from 'shared/hooks';
 import { setUrlParams } from 'shared/utils';
 import { Loader } from 'shared/components';
 
-export const CoinsList = () => {
+export const CoinsList = (): ReactElement => {
   const [{ paramsObject, coins }, dispatch] = useReducer(reducer, initialState);
 
   // setup api url
@@ -31,11 +31,11 @@ export const CoinsList = () => {
     dispatch(updateCoins(data));
   }, [data]);
 
-  const onPaginate = (pageNum: number) => {
+  const onPaginate = (pageNum: number): void => {
     dispatch(switchPage(pageNum));
   };
 
-  const onUpdateLimit = (limit: number) => {
+  const onUpdateLimit = (limit: number): void => {
     dispatch(updateLimitPerPage(limit));
   };
 

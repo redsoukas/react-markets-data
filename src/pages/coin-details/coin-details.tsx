@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { useFetch } from 'shared/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CoinDetailsVM, Github } from 'shared/models';
@@ -9,14 +9,15 @@ import { Description } from 'pages/coin-details/description/description';
 import { Percentage, Reputation } from 'shared/models/coin-details.model';
 import styles from 'pages/coin-details/coin-details.module.scss';
 
-export const CoinDetails = () => {
+export const CoinDetails = (): ReactElement => {
   const { id } = useParams();
   const navigate = useNavigate();
   const coinDetailsApiUrl = `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=true&sparkline=false`;
 
   const coinDetailsFetchState = useFetch(coinDetailsApiUrl);
 
-  const chartIntervals: any = {
+  type ChartOpions = { [key: string]: string };
+  const chartIntervals: ChartOpions = {
     DAY_1: '1',
     DAY_14: '14',
     MONTH_1: '30',
@@ -80,7 +81,7 @@ export const CoinDetails = () => {
           }}
           id="interval"
         >
-          {Object.keys(chartIntervals).map((key: any) => {
+          {Object.keys(chartIntervals).map((key: string) => {
             return <option key={key}>{chartIntervals[key]}</option>;
           })}
         </select>
@@ -90,9 +91,9 @@ export const CoinDetails = () => {
   );
 };
 
-export const SocialLinks = ({ social }: any) => {
+export const SocialLinks = ({ social }: any): ReactElement => {
   const nonEmpty = Object.keys(social).filter((key) => social[key].link !== '');
-  if (nonEmpty?.length === 0) return null;
+  if (nonEmpty?.length === 0) return <></>;
   return (
     <ul className={styles.info}>
       <label>social</label>
@@ -113,7 +114,7 @@ export const SocialLinks = ({ social }: any) => {
   );
 };
 
-export const Votes = ({ upvotes, downvotes }: Reputation) => {
+export const Votes = ({ upvotes, downvotes }: Reputation): ReactElement => {
   return (
     <div className={styles.votes}>
       <div>
@@ -125,7 +126,7 @@ export const Votes = ({ upvotes, downvotes }: Reputation) => {
   );
 };
 
-export const PriceChange = ({ priceChangePercentage }: Percentage) => {
+export const PriceChange = ({ priceChangePercentage }: Percentage): ReactElement => {
   return (
     <ul className={styles.info}>
       <label>Price Change Percentage</label>
@@ -143,7 +144,7 @@ export const PriceChange = ({ priceChangePercentage }: Percentage) => {
   );
 };
 
-export const ContactLinks = ({ contact }: any) => {
+export const ContactLinks = ({ contact }: any): ReactElement => {
   return (
     <ul className={styles.info}>
       {Object.keys(contact)?.map((key) => {
@@ -166,8 +167,8 @@ export const ContactLinks = ({ contact }: any) => {
   );
 };
 
-export const GithubStats = ({ repos, forks, stars, subscribers, issues }: Github) => {
-  if (!repos?.length) return null;
+export const GithubStats = ({ repos, forks, stars, subscribers, issues }: Github): ReactElement => {
+  if (!repos?.length) return <></>;
   return (
     <div>
       <ul className={styles.info}>

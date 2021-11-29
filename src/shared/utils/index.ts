@@ -11,7 +11,7 @@ export const currencyFormat = (number: number): string => {
   return formated;
 };
 
-export const setUrlParams = (url: URL, paramsObject: any): URL => {
+export const setUrlParams = (url: URL, paramsObject: { [key: string]: string }): URL => {
   Object.keys(paramsObject).forEach((key) => {
     url.searchParams.set(key, paramsObject[key]);
   });

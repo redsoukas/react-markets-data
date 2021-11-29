@@ -1,10 +1,18 @@
-import { useEffect, useReducer } from "react";
-import { CoinsTable } from "pages/coins-list/coins-table/coins-table";
-import { apiBase, initialState, reducer, resetFilters, switchPage, updateCoins, updateLimitPerPage } from "pages/coins-list/state";
-import { CoinsFilters } from "pages/coins-list/coins-filters/coins-filters";
-import { useFetch } from "shared/hooks";
-import { setUrlParams } from "shared/utils";
-import { Loader } from "shared/components";
+import { useEffect, useReducer } from 'react';
+import { CoinsTable } from 'pages/coins-list/coins-table/coins-table';
+import {
+  apiBase,
+  initialState,
+  reducer,
+  resetFilters,
+  switchPage,
+  updateCoins,
+  updateLimitPerPage
+} from 'pages/coins-list/state';
+import { CoinsFilters } from 'pages/coins-list/coins-filters/coins-filters';
+import { useFetch } from 'shared/hooks';
+import { setUrlParams } from 'shared/utils';
+import { Loader } from 'shared/components';
 
 export const CoinsList = () => {
   const [{ paramsObject, coins }, dispatch] = useReducer(reducer, initialState);
@@ -19,21 +27,21 @@ export const CoinsList = () => {
   const perPage = paramsObject?.per_page;
 
   // init data
-  useEffect( () => {
+  useEffect(() => {
     dispatch(updateCoins(data));
   }, [data]);
 
   const onPaginate = (pageNum: number) => {
-    dispatch(switchPage(pageNum))
-  }
+    dispatch(switchPage(pageNum));
+  };
 
   const onUpdateLimit = (limit: number) => {
-    dispatch(updateLimitPerPage(limit))
-  }
+    dispatch(updateLimitPerPage(limit));
+  };
 
   const onReset = () => {
-    dispatch(resetFilters())
-  }
+    dispatch(resetFilters());
+  };
 
   const paginationParams = {
     currentPage,
@@ -48,8 +56,8 @@ export const CoinsList = () => {
 
   return (
     <div className="container">
-      { loading ? <Loader /> : <CoinsFilters {...paginationParams} /> }
+      {loading ? <Loader /> : <CoinsFilters {...paginationParams} />}
       <CoinsTable cols={cols} data={coins} />
     </div>
   );
-}
+};

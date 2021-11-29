@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CoinsList } from "pages/coins-list";
-import { CoinDetails } from "pages/coin-details";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CoinsList } from 'pages/coins-list';
+import { CoinDetails } from 'pages/coin-details';
 import reportWebVitals from './reportWebVitals';
-import "index.scss";
+import 'index.scss';
 
 ReactDOM.render(
   <React.StrictMode>

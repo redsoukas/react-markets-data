@@ -1,2 +1,1 @@
-export { useFetch } from "shared/hooks/useFetchHook";
-
+export { useFetch } from 'shared/hooks/useFetchHook';

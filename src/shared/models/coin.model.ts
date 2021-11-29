@@ -1,4 +1,4 @@
-import { currencyFormat } from "shared/utils";
+import { currencyFormat } from 'shared/utils';
 
 export interface Coin {
   id: string;
@@ -14,9 +14,8 @@ export interface Coin {
 
 export type Coins = Array<Coin>;
 
-
 export class CoinVM implements Coin {
-  id: string
+  id: string;
   name: string;
   symbol: string;
   image: string;
@@ -25,7 +24,7 @@ export class CoinVM implements Coin {
   rank: number;
   low24: string;
   priceChange24: number;
-  constructor (data: any) {
+  constructor(data: any) {
     this.id = data?.id || '';
     this.name = data?.name || '';
     this.symbol = data?.symbol || '-';
@@ -36,6 +35,6 @@ export class CoinVM implements Coin {
     this.rank = data?.market_cap_rank;
     this.priceChange24 = data?.price_change_percentage_24h
       ? data.price_change_percentage_24h.toFixed(2)
-      : ''
+      : '';
   }
 }

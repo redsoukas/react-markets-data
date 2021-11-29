@@ -9,11 +9,11 @@ export const currencyFormat = (number: number): string => {
   const formated = new Intl.NumberFormat('en-IN', options).format(number).toString();
 
   return formated;
-}
+};
 
 export const setUrlParams = (url: URL, paramsObject: any): URL => {
-  Object.keys(paramsObject).forEach( key => {
+  Object.keys(paramsObject).forEach((key) => {
     url.searchParams.set(key, paramsObject[key]);
   });
   return url;
-}
+};

@@ -1,2 +1,1 @@
-export { CoinDetails } from "pages/coin-details/coin-details";
-
+export { CoinDetails } from 'pages/coin-details/coin-details';

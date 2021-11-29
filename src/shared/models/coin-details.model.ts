@@ -1,6 +1,6 @@
-import sanitizeHtml from "sanitize-html";
-import { currencyFormat } from "shared/utils";
-import { Coin, CoinVM } from "shared/models/coin.model";
+import sanitizeHtml from 'sanitize-html';
+import { currencyFormat } from 'shared/utils';
+import { Coin, CoinVM } from 'shared/models/coin.model';
 
 export interface CoinDetails extends Coin {
   description: string;
@@ -15,26 +15,26 @@ export interface CoinDetails extends Coin {
   github: Github;
   contactLinks: ContactLinks;
   priceChangePercentage: Percentage;
-};
+}
 
-export type Percentage = {[key:string]: any};
+export type Percentage = { [key: string]: any };
 
 export interface SocialDataItem {
   link: string;
   subs: string;
-};
+}
 
 export interface SocialData {
   facebook: SocialDataItem;
   twitter: SocialDataItem;
   reddit: SocialDataItem;
   telegram: SocialDataItem;
-};
+}
 
 export interface Reputation {
   upvotes: number;
   downvotes: number;
-};
+}
 
 export interface Github {
   repos: Array<string>;
@@ -42,7 +42,7 @@ export interface Github {
   stars: string;
   subscribers: string;
   issues: string;
-};
+}
 
 export interface ContactLinks {
   website: Array<string>;
@@ -50,8 +50,7 @@ export interface ContactLinks {
   forum: Array<string>;
   chat: Array<string>;
   announcement: Array<string>;
-};
-
+}
 
 export class CoinDetailsVM extends CoinVM implements CoinDetails {
   description: string;
@@ -66,7 +65,7 @@ export class CoinDetailsVM extends CoinVM implements CoinDetails {
   github: Github;
   contactLinks: ContactLinks;
   priceChangePercentage: Percentage;
-  constructor (data: any) {
+  constructor(data: any) {
     super(data);
     this.image = data?.image?.small;
     this.price = currencyFormat(data?.market_data?.current_price?.usd) || '';
@@ -81,13 +80,17 @@ export class CoinDetailsVM extends CoinVM implements CoinDetails {
     this.atlDate = new Date(data?.market_data?.atl_date?.usd).toLocaleDateString('en-US');
     this.social = {
       facebook: {
-        link: data?.links?.facebook_username ? `https://facebook.com/${data.links.facebook_username}` : '',
+        link: data?.links?.facebook_username
+          ? `https://facebook.com/${data.links.facebook_username}`
+          : '',
         subs: data?.community_data?.facebook_likes
           ? `${Intl.NumberFormat().format(data.community_data.facebook_likes)} Likes`
           : ''
       },
       twitter: {
-        link: data?.links?.twitter_screen_name ? `https://twitter.com/${data.links.twitter_screen_name}` : '',
+        link: data?.links?.twitter_screen_name
+          ? `https://twitter.com/${data.links.twitter_screen_name}`
+          : '',
         subs: data?.community_data?.twitter_followers
           ? `${Intl.NumberFormat().format(data.community_data.twitter_followers)} Followers`
           : ''
@@ -99,7 +102,9 @@ export class CoinDetailsVM extends CoinVM implements CoinDetails {
           : ''
       },
       telegram: {
-        link: data?.links?.telegram_channel_identifier ? `https://telegram.org/${data.links.telegram_channel_identifier}` : '',
+        link: data?.links?.telegram_channel_identifier
+          ? `https://telegram.org/${data.links.telegram_channel_identifier}`
+          : '',
         subs: data?.community_data?.telegram_channel_user_count
           ? `${Intl.NumberFormat().format(data.community_data.telegram_channel_user_count)} Users`
           : ''
@@ -108,11 +113,11 @@ export class CoinDetailsVM extends CoinVM implements CoinDetails {
     this.reputation = {
       upvotes: data?.sentiment_votes_up_percentage || 0,
       downvotes: data?.sentiment_votes_down_percentage || 0
-    }
+    };
     this.github = {
       repos: data?.links?.repos_url?.github || [],
       forks: data?.developer_data?.forks
-        ? Intl.NumberFormat().format( data.developer_data.forks)
+        ? Intl.NumberFormat().format(data.developer_data.forks)
         : '',
       stars: data?.developer_data?.stars
         ? Intl.NumberFormat().format(data.developer_data.stars)
@@ -125,11 +130,11 @@ export class CoinDetailsVM extends CoinVM implements CoinDetails {
         : ''
     };
     this.contactLinks = {
-      website: data?.links?.homepage?.filter( (item: string) => item) || [],
-      explorers: data?.links?.blockchain_site?.filter( (item: string) => item) || [],
-      forum: data?.links?.official_forum_url?.filter( (item: string) => item) || [],
-      chat: data?.links?.chat_url?.filter( (item: string) => item) || [],
-      announcement: data?.links?.announcement_url?.filter( (item: string) => item) || []
+      website: data?.links?.homepage?.filter((item: string) => item) || [],
+      explorers: data?.links?.blockchain_site?.filter((item: string) => item) || [],
+      forum: data?.links?.official_forum_url?.filter((item: string) => item) || [],
+      chat: data?.links?.chat_url?.filter((item: string) => item) || [],
+      announcement: data?.links?.announcement_url?.filter((item: string) => item) || []
     };
     this.priceChangePercentage = {
       '24 hours': data?.market_data?.price_change_percentage_24h,
@@ -139,6 +144,6 @@ export class CoinDetailsVM extends CoinVM implements CoinDetails {
       '2 months': data?.market_data?.price_change_percentage_60d,
       '200 days': data?.market_data?.price_change_percentage_200d,
       '1 year': data?.market_data?.price_change_percentage_1y
-    }
+    };
   }
 }

@@ -39,7 +39,7 @@ export const CoinsList = (): ReactElement => {
     dispatch(updateLimitPerPage(limit));
   };
 
-  const onReset = () => {
+  const onReset = (): void => {
     dispatch(resetFilters());
   };
 

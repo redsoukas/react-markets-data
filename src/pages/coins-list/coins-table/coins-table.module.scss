@@ -4,13 +4,12 @@
   border-collapse: collapse;
   @media screen and (min-width: 768px) {
     width: 100%;
-    // max-width: 800px;
   }
   tr {
-    border-bottom: 1px solid var(--lightGray);
+    border-bottom: 1px solid var(--genericGray);
     cursor: pointer;
     &:hover {
-      background-color: var(--lightGray);
+      background-color: var(--genericGray);
     }
     td {
       vertical-align: middle;
@@ -51,10 +50,9 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 5px;
-    background: var(--lightGray);
+    background: var(--genericGray);
   }
   > span {
-    // max-width: 150px;
     text-align: left;
     > span {
       color: gray;

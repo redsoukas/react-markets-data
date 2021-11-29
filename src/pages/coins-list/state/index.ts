@@ -9,14 +9,16 @@ interface CoinListState {
   paramsObject: CoinListParams;
 }
 
+const initialParams = {
+  page: 1,
+  vs_currency: 'usd',
+  per_page: 100
+};
+
 // Initial State
 export const initialState: CoinListState = {
   coins: [],
-  paramsObject: {
-    page: 1,
-    vs_currency: 'usd',
-    per_page: 100
-  }
+  paramsObject: initialParams
 };
 
 // Action Types
@@ -43,7 +45,7 @@ export const reducer = (state: CoinListState = initialState, action: any): CoinL
     case ActionTypes.RESET: {
       return {
         ...state,
-        ...initialState
+        paramsObject: initialParams
       };
     }
     case ActionTypes.UPDATE_COINS: {

@@ -1,0 +1,9 @@
+.progressBar {
+  background: var(--red);
+  border-radius: var(--radius);
+  > div {
+    background-color: var(--green);
+    border-radius: var(--radius);
+    height: 16px;
+  }
+}

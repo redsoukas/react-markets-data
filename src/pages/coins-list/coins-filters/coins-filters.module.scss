@@ -1,0 +1,14 @@
+.filters {
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+  button {
+    margin: 0 12px;
+  }
+  input {
+    width: 100px;
+    border: 1px solid var(--lightGray);
+    padding: 5px;
+    border-radius: var(--radius);
+  }
+}

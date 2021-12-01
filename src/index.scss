@@ -3,8 +3,8 @@
   --radius: 5px;
   --linkColor: #106ac3;
   --genericGray: #eee;
-  --green: #16c784;
-  --red: #eb3943;
+  --greenPositive: #16c784;
+  --redNegative: #eb3943;
 }
 
 body {
@@ -62,11 +62,11 @@ button {
 }
 
 .positive {
-  color: var(--green);
+  color: var(--greenPositive);
 }
 
 .negative {
-  color: var(--red);
+  color: var(--redNegative);
 }
 
 a {

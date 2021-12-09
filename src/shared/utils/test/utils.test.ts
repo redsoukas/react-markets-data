@@ -27,7 +27,7 @@ describe('Utils test suite', () => {
     it('Should set params properly to url without initial query params', () => {
       const url = new URL('https://api.coingecko.com/api/v3/coins/markets');
 
-      const paramsObject = {
+      const paramsObject: any = {
         page: 1,
         vs_currency: 'usd'
       };
@@ -40,7 +40,7 @@ describe('Utils test suite', () => {
 
     it('Should set params properly to url with initial query params', () => {
       const url = new URL('https://api.coingecko.com/api/v3/coins/markets?page=1&vs_currency=usd');
-      const paramsObject = {
+      const paramsObject: any = {
         page: 55,
         vs_currency: 'eur',
         per_page: 120
